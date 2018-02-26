@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/search.css">
+<div class="container-full">
+    <div class="row">
+        <div class="col-lg-12 text-center v-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 offset-2">
+                        <h2>Search for Podcasts</h2>
+                        <div id="imaginary_container">
+                            <form method="get" action="/podcast/search">
+                                <div class="input-group stylish-input-group input-append">
+                                    <input type="text" name="q" class="form-control" placeholder="Search">
+                                    <span class="input-group-addon">
+                                    <button type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /row -->
+    <br><br><br><br><br>
+</div> <!-- /container full -->
+<div class="container">
+    <hr>
+    <?php if(isset($data['results'])){ ?>
+    <div class="row">
+        <div class="container">
+            <hgroup class="mb20">
+                <h1>Search Results</h1>
+                <h2 class="lead"><strong class="text-danger"><?= count($data['results']) ?></strong> results were found for the search for <strong class="text-danger"><?= htmlspecialchars($_GET['q']) ?></strong></h2>
+            </hgroup>
+            <section class="col-xs-12 col-sm-6 col-md-12">
+                <?php
+                foreach ($data['results'] as $channel){ ?>
+                <article class="search-result row">
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <a href="#" title="Lorem ipsum" class="thumbnail"><img src="<?= $channel['image'] ?>" /></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-2">
+                        <ul class="meta-search">
+                            <li><i class="fas fa-star"></i> <span><?= $channel['rating'] ?></span></li>
+                            <li><i class="fas fa-thumbs-up"></i> <span><?= $channel['votes'] ?></span></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+                        <h3><a href="#" title=""><?= $channel['title'] ?></a></h3>
+                        <p><?= substr($channel['description'],0,200) ?>...</p>
+                    </div>
+                    <span class="clearfix borda"></span>
+                </article>
+                <?php } ?>
+            </section>
+        </div>
+    </div>
+    <?php } ?>
+</div>
