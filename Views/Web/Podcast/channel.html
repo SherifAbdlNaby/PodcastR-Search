@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/channel.css">
 <div class="container-full">
     <div class="row">
@@ -13,7 +13,6 @@
                                     <h2><?= $data['result']['title'] ?></h2>
                                     <p><strong>Description: </strong> <?= $data['result']['description'] ?><br/>
                                     <strong>Date: </strong> <?= date_format(date_create($data['result']['date']), 'Y-m-d') ?><br/>
-                                    <strong>Copyright: </strong> <?= $data['result']['copyright'] ?> </p>
                                     <div class="col-lg-12">
                                         <i class="fas fa-thumbs-up"></i> <span> Likes: <?= $data['result']['votes'] ?></span>  	&nbsp;	&nbsp;	&nbsp;
                                         <i class="fas fa-users"></i></i> <span> Subscribers: <?= $data['result']['subscribers'] ?></span> 	&nbsp;	&nbsp;	&nbsp;
@@ -27,39 +26,47 @@
             </div>
         </div>
     </div> <!-- /row -->
-    <br><br><br><br><br>
+    <br><br>
 </div> <!-- /container full -->
 <div class="container">
     <hr>
-    <?php if(isset($data['results'])){ ?>
     <div class="row">
         <div class="container">
             <hgroup class="mb20">
-                <h1>Search Results</h1>
-                <h2 class="lead"><strong class="text-danger"><?= count($data['results']) ?></strong> results were found for the search for <strong class="text-danger"><?= htmlspecialchars($_GET['q']) ?></strong></h2>
+                <h1>Episodes</h1>
+                <h2 class="lead">Showing <strong class="text-danger"><?= count($data['result']['episodes']) ?></strong> of  <?= $data['result']['show_count'] ?> </h2>
             </hgroup>
             <section class="col-xs-12 col-sm-6 col-md-12">
                 <?php
-                foreach ($data['results'] as $channel){ ?>
+                foreach ($data['result']['episodes'] as $episode){ ?>
                 <article class="search-result row">
                     <div class="col-xs-12 col-sm-12 col-md-3">
-                        <a href="#" title="Lorem ipsum" class="thumbnail"><img src="<?= $channel['image'] ?>" /></a>
+                        <a class="thumbnail"><img src="<?=  $data['result']['image'] ?>" /></a>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-2">
                         <ul class="meta-search">
-                            <li><i class="fas fa-star"></i> <span><?= $channel['rating'] ?></span></li>
-                            <li><i class="fas fa-thumbs-up"></i> <span><?= $channel['votes'] ?></span></li>
+                            <li><i class="fas fa-calendar-alt"></i> <span><?= $episode['date'] ?></span></li>
+                            <li><i class="fas fa-star"></i> <span><?= $episode['rating'] ?></span></li>
+                            <li><i class="fas fa-thumbs-up"></i> <span><?= $episode['votes'] ?></span></li>
+                            <li><i class="fas fa-download"></i> <span><?= round($episode['size']/1000000) ?> MB</span></li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                        <h3><a href="#" title=""><?= $channel['title'] ?></a></h3>
-                        <p><?= substr($channel['description'],0,200) ?>...</p>
+                        <h3><a href="#" title=""><?= $episode['title'] ?></a></h3>
+                        <p><?= substr($episode['description'],0,200) ?>...</p>
+                        <audio controls preload="none">
+                            <source src="<?= $episode['media_link'] ?>" type="<?= $episode['mime_type'] ?>" >
+                            Your browser does not support the audio element.
+                        </audio>
                     </div>
                     <span class="clearfix borda"></span>
                 </article>
                 <?php } ?>
             </section>
         </div>
-    </div>
-    <?php } ?>
+    </div><br/>
+    </div><br/>
+    </div><br/>
+    <div class="text-center" > <strong>Copyright: </strong> <?= $data['result']['copyright'] ?> </div>
 </div>
+
