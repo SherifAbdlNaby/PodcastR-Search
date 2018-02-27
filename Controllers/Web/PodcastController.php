@@ -10,7 +10,7 @@ use App\Utilities\ApiUtil;
 
 class PodcastController extends WebController {
     public function Index(){
-        return $this->render();
+        return $this->redirect('podcast/search/');
     }
 
     public function Search(){

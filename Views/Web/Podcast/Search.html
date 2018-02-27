@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/channel.css">
 <link rel="stylesheet" href="/css/search.css">
 <div class="container-full">
     <div class="row">
@@ -6,7 +6,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-8 offset-2">
-                        <h2>Search for Podcasts</h2>
+                        <h3>Search for Podcasts</h3>
+                        <p class="lead">Search for podcast channels and browse its episodes <i class="fas fa-search footer-social"></i> </p>
                         <div id="imaginary_container">
                             <form method="get" action="/podcast/search">
                                 <div class="input-group stylish-input-group input-append">
@@ -25,15 +26,16 @@
         </div>
     </div> <!-- /row -->
     <br><br><br><br><br>
-</div> <!-- /container full -->
+</div>
+<!-- /container full -->
 <div class="container">
     <hr>
     <?php if(isset($data['results'])){ ?>
     <div class="row">
         <div class="container">
             <hgroup class="mb20">
-                <h1>Search Results</h1>
-                <h2 class="lead"><strong class="text-danger"><?= count($data['results']) ?></strong> results were found for the search for <strong class="text-danger"><?= htmlspecialchars($_GET['q']) ?></strong></h2>
+                <h2>Search Results</h2>
+                <h5><strong><?= count($data['results']) ?></strong> results were found for the search for <strong class="text-danger"><?= htmlspecialchars($_GET['q']) ?></strong></h5>
             </hgroup>
             <section class="col-xs-12 col-sm-6 col-md-12">
                 <?php
