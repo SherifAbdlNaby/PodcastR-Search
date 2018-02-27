@@ -36,4 +36,16 @@ class PodcastController extends WebController {
         else
             return $this->renderFullError('No Channel with this Id', 404);
     }
+
+    public function episode($id)
+    {
+        $url = 'https://api.podcast.de/show/'.urlencode($id).'.json?limit=30';
+        $api = ApiUtil::curlCall($url);
+        if(!empty($api['show'])){
+            $this->data['result'] = $api['show'];
+            return $this->render();
+        }
+        else
+            return $this->renderFullError('No Channel with this Id', 404);
+    }
 }

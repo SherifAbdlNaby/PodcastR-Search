@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/channel.css">
+<div class="container-full">
+    <div class="row">
+        <div class="col-lg-12 text-center v-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well profile">
+                            <div class="col-sm-12">
+                                <div class="col-xs-12">
+                                    <a class="thumbnail"><img src="<?=  $data['result']['image'] ?>" /></a> <br/>  <br/>
+                                    <h2><?= $data['result']['title'] ?></h2>
+                                    <strong>Channel: </strong> <a href="\podcast\channel\<?=$data['result']['channel_id'] ?>"> <?= $data['result']['channel_title'] ?> </a>
+                                    <p><strong>Description: </strong> <?= $data['result']['description'] ?><br/>
+                                    <strong>Date: </strong> <?= date_format(date_create($data['result']['date']), 'Y-m-d') ?><br/>
+                                    <div class="col-lg-12">
+                                    <i class="fas fa-thumbs-up"></i> <span> Likes: <?= $data['result']['votes'] ?></span>  &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;
+                                    <i class="fas fa-star"></i> <span> Rating: <?= $data['result']['rating'] ?></span>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <div class="col-lg-12">
+                                        <audio controls preload="none">
+                                            <source src="<?= $data['result']['media_link'] ?>" type="<?= $data['result']['mime_type'] ?>" >
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /row -->
+    <br><br>
+</div>
+

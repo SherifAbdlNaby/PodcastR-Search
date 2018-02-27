@@ -14,8 +14,8 @@
                                     <p><strong>Description: </strong> <?= $data['result']['description'] ?><br/>
                                     <strong>Date: </strong> <?= date_format(date_create($data['result']['date']), 'Y-m-d') ?><br/>
                                     <div class="col-lg-12">
-                                        <i class="fas fa-thumbs-up"></i> <span> Likes: <?= $data['result']['votes'] ?></span>  	&nbsp;	&nbsp;	&nbsp;
                                         <i class="fas fa-users"></i></i> <span> Subscribers: <?= $data['result']['subscribers'] ?></span> 	&nbsp;	&nbsp;	&nbsp;
+                                        <i class="fas fa-thumbs-up"></i> <span> Likes: <?= $data['result']['votes'] ?></span>  	&nbsp;	&nbsp;	&nbsp;
                                         <i class="fas fa-star"></i> <span> Rating: <?= $data['result']['rating'] ?></span>
                                     </div>
                                 </div>
@@ -52,7 +52,7 @@
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                        <h3><a href="#" title=""><?= $episode['title'] ?></a></h3>
+                        <h3><a href="/podcast/episode/<?= $episode['show_id'] ?>" title=""><?= $episode['title'] ?></a></h3>
                         <p><?= substr($episode['description'],0,200) ?>...</p>
                         <audio controls preload="none">
                             <source src="<?= $episode['media_link'] ?>" type="<?= $episode['mime_type'] ?>" >
