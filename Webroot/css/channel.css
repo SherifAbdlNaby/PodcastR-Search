@@ -14,7 +14,7 @@ h1 {
 }
 
 .lead {
-    color: #50b497;
+    color: #be98f3;
 }
 
 /* Custom container */
@@ -22,7 +22,7 @@ h1 {
     margin: 0 auto;
     width: 100%;
     min-height:60%;
-    background-color: #0C2032;
+    background-color: #673ba7;
     color:#eee;
     overflow:hidden;
 }
