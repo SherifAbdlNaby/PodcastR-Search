@@ -1,23 +1,26 @@
 <link rel="stylesheet" href="/css/home.css">
-<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/channel.css">
 <div class="container-full">
     <div class="row">
         <div class="col-lg-12 text-center v-center">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-8 offset-2">
-                        <h2>Search for Podcasts</h2>
-                        <div id="imaginary_container">
-                            <form method="get" action="/podcast/search">
-                                <div class="input-group stylish-input-group input-append">
-                                    <input type="text" name="q" class="form-control" placeholder="Search">
-                                    <span class="input-group-addon">
-                                    <button type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                    </span>
+                    <div class="col-md-12">
+                        <div class="well profile">
+                            <div class="col-sm-12">
+                                <div class="col-xs-12">
+                                    <a class="thumbnail"><img src="<?=  $data['result']['image'] ?>" /></a> <br/>  <br/>
+                                    <h2><?= $data['result']['title'] ?></h2>
+                                    <p><strong>Description: </strong> <?= $data['result']['description'] ?><br/>
+                                    <strong>Date: </strong> <?= date_format(date_create($data['result']['date']), 'Y-m-d') ?><br/>
+                                    <strong>Copyright: </strong> <?= $data['result']['copyright'] ?> </p>
+                                    <div class="col-lg-12">
+                                        <i class="fas fa-thumbs-up"></i> <span> Likes: <?= $data['result']['votes'] ?></span>  	&nbsp;	&nbsp;	&nbsp;
+                                        <i class="fas fa-users"></i></i> <span> Subscribers: <?= $data['result']['subscribers'] ?></span> 	&nbsp;	&nbsp;	&nbsp;
+                                        <i class="fas fa-star"></i> <span> Rating: <?= $data['result']['rating'] ?></span>
+                                    </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -40,7 +43,7 @@
                 foreach ($data['results'] as $channel){ ?>
                 <article class="search-result row">
                     <div class="col-xs-12 col-sm-12 col-md-3">
-                        <a class="thumbnail"><img src="<?= $channel['image'] ?>" /></a>
+                        <a href="#" title="Lorem ipsum" class="thumbnail"><img src="<?= $channel['image'] ?>" /></a>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-2">
                         <ul class="meta-search">

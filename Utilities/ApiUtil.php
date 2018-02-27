@@ -13,7 +13,7 @@ class ApiUtil{
         $curl = curl_init();
 
         // Set URL to download
-        curl_setopt($curl, CURLOPT_URL, 'https://api.podcast.de/search.json?q='.urlencode($_GET['q']).'&limit=20');
+        curl_setopt($curl, CURLOPT_URL, $url);
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
