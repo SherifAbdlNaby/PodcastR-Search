@@ -2,7 +2,7 @@
 use App\Core\Config;
 
 /* Names, constants, and stuff that will be used in the code later. */
-Config::set('title', 'Podcast-r');
+Config::set('title', 'PodcastR');
 
 /* Optional Settings (Flags) */
 

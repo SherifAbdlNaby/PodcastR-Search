@@ -19,6 +19,6 @@ class ApiUtil{
 
         curl_close($curl);
 
-        return json_decode($output, true);
+        return $output ? json_decode($output, true) : false;
     }
 }

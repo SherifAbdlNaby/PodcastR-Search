@@ -13,10 +13,4 @@ class HomeController extends WebController {
     public function Index(){
         return $this->render('default', VIEW_PATH.DS.'Web/Podcast/Search.html');
     }
-
-    public function About(){
-        //Set title of About page.
-        $this->meta['title'] = 'About · Ciro';
-        return $this->render();
-    }
 }

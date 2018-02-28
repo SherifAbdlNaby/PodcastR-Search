@@ -7,19 +7,13 @@
                 <div class="row">
                     <div class="col-sm-8 offset-2">
                         <h3>Search for Podcasts</h3>
-                        <p class="lead">Search for podcast channels and browse its episodes <i class="fas fa-search footer-social"></i> </p>
-                        <div id="imaginary_container">
-                            <form method="get" action="/podcast/search">
-                                <div class="input-group stylish-input-group input-append">
-                                    <input type="text" name="q" class="form-control" placeholder="Search">
-                                    <span class="input-group-addon">
-                                    <button type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>
+                        <p class="lead"><i class="fas fa-search footer-social"></i> Search for podcast channels and browse its episodes </p>
+                        <form id="search-form" class="form-inline" role="form" method="get" action="/podcast/search">
+                            <div class="input-group col-lg-12">
+                                <input type="text" name="q" class="form-control search-form" placeholder="Search" value="<?=htmlspecialchars($_GET['q'])?>" autofocus >
+                                <span class="input-group-btn"><button type="submit" class="btn btn-primary search-btn" data-target="#search-form" ><i class="fa fa-search"></i></button></span>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -27,19 +21,26 @@
     </div> <!-- /row -->
     <br><br><br><br><br>
 </div>
+<?php if(isset($data['results'])){ ?>
 <!-- /container full -->
 <div class="container">
-    <hr>
-    <?php if(isset($data['results'])){ ?>
+    <?php if(empty($data['results'])){ ?>
+        <br/>
+        <br/>
+        <h3 class="text-center"> No results were found for  <strong>"<?= htmlspecialchars($_GET['q']) ?>"</strong></h3>
+    <?php } else {?>
     <div class="row">
         <div class="container">
+            <br/>
+            <br/>
             <hgroup class="mb20">
                 <h2>Search Results</h2>
-                <h5><strong><?= count($data['results']) ?></strong> results were found for the search for <strong class="text-danger"><?= htmlspecialchars($_GET['q']) ?></strong></h5>
+                <h5><strong><?= count($data['results']) ?></strong> results were found for the search for <strong class="text-dark">"<?= htmlspecialchars($_GET['q']) ?>"</strong></h5>
             </hgroup>
             <section class="col-xs-12 col-sm-6 col-md-12">
                 <?php
                 foreach ($data['results'] as $channel){ ?>
+                <hr>
                 <article class="search-result row">
                     <div class="col-xs-12 col-sm-12 col-md-3">
                         <a class="thumbnail"><img src="<?= $channel['image'] ?>" /></a>
@@ -60,5 +61,5 @@
             </section>
         </div>
     </div>
-    <?php } ?>
+<?php  }} ?>
 </div>

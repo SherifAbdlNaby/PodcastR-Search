@@ -21,8 +21,9 @@ h1 {
 .container-full {
     margin: 0 auto;
     width: 100%;
-    min-height:60%;
+    min-height:40%;
     background-color: #673ba7;
+    background: url("/img/bg.png") repeat;
     color:#eee;
     overflow:hidden;
 }
